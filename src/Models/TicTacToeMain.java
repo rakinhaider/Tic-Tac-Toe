@@ -1,4 +1,7 @@
+package Models;
 import javax.swing.JFrame;
+
+import UI.TicTacToeUI;
 
 public class TicTacToeMain {
 

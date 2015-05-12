@@ -1,3 +1,4 @@
+package Models;
 public class Utility {
 
 	public static int moves;
@@ -6,9 +7,9 @@ public class Utility {
 	public static final int EMPTY = 0;
 	private static int winner = EMPTY;
 
-	public static boolean terminalTest(State state) {
+	public static boolean isTerminal(State state) {
 		if (moves == 9)
-			return false;
+			return true;
 		for (int i = 0; i < state.grid.length; i++) {
 			if (state.grid[i][0] == state.grid[i][1]
 					&& state.grid[i][1] == state.grid[i][2]
@@ -16,9 +17,6 @@ public class Utility {
 				winner = state.grid[i][0];
 				return true;
 			}
-		}
-
-		for (int i = 0; i < state.grid.length; i++) {
 			if (state.grid[0][i] == state.grid[1][i]
 					&& state.grid[1][i] == state.grid[2][i]
 					&& state.grid[0][i] != EMPTY) {
@@ -45,8 +43,20 @@ public class Utility {
 		return false;
 	}
 
-	public int getUtility(State state) {
+	public static int getUtility(State state) {
 		return winner;
+	}
+	
+	public static int max(int a, int b)
+	{
+		if(a>=b)return a;
+		return b;
+	}
+	
+	public static int min(int a, int b)
+	{
+		if(a<=b)return a;
+		return b;
 	}
 
 }
