@@ -13,7 +13,7 @@ public class Minimax {
 	
 	public static Action miniMaxDecision(State state)
 	{
-		int v = maxValue(state,-2,+2);
+		int v = maxValue(state,-11,+11);
 		System.out.println(state.actionToTake.value);
 		return state.actionToTake;
 	}
@@ -67,16 +67,18 @@ private static int maxValue(State state,int alpha,int beta) {
 		
 		if(Utility.isTerminal(state))
 		{
-			return Utility.getUtility(state);
+			return (10-state.move)*Utility.getUtility(state);
+			//return Utility.getUtility(state);
 		}
 		
-		int v=-2;
-		int prevv=-2;
+		int v=-11;
+		int prevv=-11;
 		for (Action a : state.getSuccessor()) {
 			
 			State s= state.performAction(a, Utility.MAXMOVE);
+			s.setMove(state.move+1);
 			v=Utility.max(v, minValue(s,alpha,beta));
-			if(v>prevv || prevv==-2)
+			if(v>prevv || prevv==-11 )
 			{
 				a.value=v;
 				state.actionToTake=a;
@@ -93,16 +95,18 @@ private static int maxValue(State state,int alpha,int beta) {
 	private static int minValue(State state,int alpha,int beta) {
 		if(Utility.isTerminal(state))
 		{
-			return Utility.getUtility(state);
+			return (10-state.move)*Utility.getUtility(state);
+			//return Utility.getUtility(state);
 		}
 		
-		int v=2;
-		int prevv=2;
+		int v=11;
+		int prevv=11;
 		for (Action a : state.getSuccessor()) {
 			
 			State s= state.performAction(a, Utility.MINMOVE);
+			s.setMove(state.move+1);
 			v=Utility.min(v, maxValue(s,alpha,beta));
-			if(v<prevv || prevv==2)
+			if(v<prevv || prevv==11)
 			{
 				a.value=v;
 				state.actionToTake=a;
@@ -146,7 +150,7 @@ private static int maxValue(State state,int alpha,int beta) {
 				}
 				System.out.println();
 			}
-			Action minmove=new Action(sc.nextInt(), sc.nextInt(), 0);
+			Action minmove=new Action(sc.nextInt(), sc.nextInt(), 0,0);
 			cur=cur.performAction(minmove, Utility.MINMOVE);
 		}
 		

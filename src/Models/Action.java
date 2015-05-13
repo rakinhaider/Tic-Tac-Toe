@@ -7,12 +7,14 @@ public class Action {
 	}
 	public int x;
 	public int y;
+	int move;
 	int value;
-	public Action(int x, int y, int value) {
+	public Action(int x, int y, int value,int move) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.value = value;
+		this.move=move;
 	}
 	
 	

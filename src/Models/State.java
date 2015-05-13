@@ -9,8 +9,16 @@ public class State {
 	public static final int OMOVE=2;
 	public static final int EMPTY=0;
 	
+	public int getMove() {
+		return move;
+	}
+
+	public void setMove(int move) {
+		this.move = move;
+	}
+
 	int[][] grid;
-	
+	int move;
 	Action actionToTake;
 	
 	ArrayList<Action> successor;
@@ -23,6 +31,7 @@ public class State {
 			}
 		}
 		successor=new ArrayList<Action>();
+		move=0;
 		createSuccessors();
 	}
 	
@@ -64,7 +73,7 @@ public class State {
 			{
 				if(grid[i][j]==Utility.EMPTY)
 				{
-					Action action=new Action(i, j, 0);
+					Action action=new Action(i, j, 0,0);
 					successor.add(action);
 				}
 			}
