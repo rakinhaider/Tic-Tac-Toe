@@ -76,9 +76,9 @@ private static int maxValue(State state,int alpha,int beta) {
 		for (Action a : state.getSuccessor()) {
 			
 			State s= state.performAction(a, Utility.MAXMOVE);
-			s.setMove(state.move+1);
+			//s.setMove(state.move+1);
 			v=Utility.max(v, minValue(s,alpha,beta));
-			if(v>prevv || prevv==-11 )
+			if(v>prevv)
 			{
 				a.value=v;
 				state.actionToTake=a;
@@ -104,9 +104,9 @@ private static int maxValue(State state,int alpha,int beta) {
 		for (Action a : state.getSuccessor()) {
 			
 			State s= state.performAction(a, Utility.MINMOVE);
-			s.setMove(state.move+1);
+			//s.setMove(state.move+1);
 			v=Utility.min(v, maxValue(s,alpha,beta));
-			if(v<prevv || prevv==11)
+			if(v<prevv)
 			{
 				a.value=v;
 				state.actionToTake=a;
@@ -144,12 +144,12 @@ private static int maxValue(State state,int alpha,int beta) {
 		{
 			Action mavMove=miniMaxDecision(cur);
 			cur=cur.performAction(mavMove, Utility.MAXMOVE);
-			for (int[] is : cur.grid) {
-				for (int i : is) {
-					System.out.print(i+" ");
-				}
-				System.out.println();
-			}
+//			for (int[] is : cur.grid) {
+//				for (int i : is) {
+//					System.out.print(i+" ");
+//				}
+//				System.out.println();
+//			}
 			Action minmove=new Action(sc.nextInt(), sc.nextInt(), 0,0);
 			cur=cur.performAction(minmove, Utility.MINMOVE);
 		}

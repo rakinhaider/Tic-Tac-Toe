@@ -44,7 +44,7 @@ public class TicTacToeUI extends JFrame {
 			for (int j = 0; j < grid[i].length; j++) {
 				grid[i][j].setBounds(10 + 5 * (j) + 90 * j,
 						50 + 70 * i + 5 * i, 90, 70);
-				grid[i][j].setText("X");
+				grid[i][j].setText("");
 				grid[i][j].setVisible(true);
 
 				grid[i][j].addActionListener(new MyActionListener());

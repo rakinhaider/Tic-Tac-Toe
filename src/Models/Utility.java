@@ -8,8 +8,6 @@ public class Utility {
 	private static int winner = EMPTY;
 
 	public static boolean isTerminal(State state) {
-		if (moves == 9)
-			return true;
 		for (int i = 0; i < state.grid.length; i++) {
 			if (state.grid[i][0] == state.grid[i][1]
 					&& state.grid[i][1] == state.grid[i][2]
@@ -40,10 +38,15 @@ public class Utility {
 				winner=state.grid[1][1];
 				return true;
 			}
+		
+		if (state.move == 9)
+			return true;
 		return false;
 	}
 
 	public static int getUtility(State state) {
+		
+		
 		return winner;
 	}
 	

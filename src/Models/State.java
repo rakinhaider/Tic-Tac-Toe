@@ -24,14 +24,16 @@ public class State {
 	ArrayList<Action> successor;
 	public State(int [][] grid){
 		this.grid=new int[3][3];
+		move=0;
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid.length; j++) {
 				
 				this.grid[i][j]=grid[i][j];
+				if(this.grid[i][j]!=Utility.EMPTY)move++;
 			}
 		}
 		successor=new ArrayList<Action>();
-		move=0;
+		
 		createSuccessors();
 	}
 	
